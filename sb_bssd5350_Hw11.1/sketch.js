@@ -1,5 +1,4 @@
-let planeBounds = 2;
-
+let planeBounds = 2
 function setup() {
   createCanvas(400, 400);
   noLoop;
@@ -7,9 +6,7 @@ function setup() {
 
 function draw() {
   background(120);
-  let pink = color(255, 102, 204);
-  colorMode(HSB, 360, 1, 1, 255);
-  let truePink = pink;
+  let truePink = color(255, 102, 204);
   pixelDensity(1);
   loadPixels();
   
@@ -41,7 +38,25 @@ function draw() {
            pixels[i + 3] = alpha(truePink); 
            break; //stop counting toward max iterations. not part of set.}
         }
-      }  
+      }
+      if (n >= 12 && n < 14) {
+        pixels[i] = 221;
+        pixels[i + 1] = 221; 
+        pixels[i + 2] = 0; 
+        pixels[i + 3] = 4;
+      }
+      if (n >= 14 && n < 15) {
+        pixels[i] = 221;
+        pixels[i + 1] = 160; 
+        pixels[i + 2] = 221; 
+        pixels[i + 3] = 2;
+      }
+      if (n >= 15 && n < maxlter) {
+        pixels[i] = 116;
+      pixels[i + 1] = 35; 
+      pixels[i + 2] = 75; 
+      pixels[i + 3] = 3;
+      }
       if (n == maxlter) { //blue is part of the set.
       pixels[i] = 0;
       pixels[i + 1] = green(truePink); 
