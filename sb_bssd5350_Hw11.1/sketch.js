@@ -1,7 +1,14 @@
 let planeBounds = 2
+let maxlter = 100;
+
 function setup() {
   createCanvas(400, 400);
   noLoop;
+  
+   // create sliders
+  mSlider = createSlider(0,maxlter,16);
+  mSlider.position(20, 20);
+
 }
 
 function draw() {
@@ -9,6 +16,8 @@ function draw() {
   let truePink = color(255, 102, 204);
   pixelDensity(1);
   loadPixels();
+  maxlter = mSlider.value();
+ 
   
   let r = width/4;
   let cx = width/2;
@@ -20,7 +29,6 @@ function draw() {
      let yfrac = map(y, 0, height, -planeBounds, planeBounds); 
      let i = (x + y * width) * 4;
      let inf = 16;
-     let maxlter = 100;
      let n = 0;
 
      //begin mandelbrot formula
@@ -39,11 +47,11 @@ function draw() {
            break; //stop counting toward max iterations. not part of set.}
         }
       }
-      if (n >= 12 && n < 14) {
+      if (n >= 8 && n < 14) {
         pixels[i] = 221;
         pixels[i + 1] = 221; 
         pixels[i + 2] = 0; 
-        pixels[i + 3] = 4;
+        pixels[i + 3] = 100;
       }
       if (n >= 14 && n < 15) {
         pixels[i] = 221;
